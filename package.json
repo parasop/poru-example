@@ -1,0 +1,35 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "An example bot based on poru api",
+  "main": "index.js",
+  "dependencies": {
+    "ascii-table": "0.0.9",
+    "chunk": "0.0.3",
+    "discord.js": "^13.8.0",
+    "ms": "^2.1.3",
+    "poru": "^1.0.4"
+  },
+  "devDependencies": {
+    "node": "^16.14.2"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "node-update": "npm i --save-dev node@16 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH",
+    "node-clean": "rm -rf node_modules && rm package-lock.json && npm cache clear --force && npm cache clean --force && npm i",
+    "node-update-then-clean": "npm run node-update && npm run node-clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parasop/poru-example.git"
+  },
+  "keywords": [
+    "poru"
+  ],
+  "author": "PARAS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/parasop/poru-example/issues"
+  },
+  "homepage": "https://github.com/parasop/poru-example#readme"
+}
