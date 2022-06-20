@@ -1,7 +1,7 @@
 {
-  "name": "y",
+  "name": "Poru Music",
   "version": "1.0.0",
-  "description": "An example bot based on poru api",
+  "description": "An example bot on how I to use poru in a basic level",
   "main": "index.js",
   "dependencies": {
     "ascii-table": "0.0.9",
