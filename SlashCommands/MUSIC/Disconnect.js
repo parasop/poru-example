@@ -6,13 +6,10 @@ module.exports = {
   description: "disconnect the bot!",
   inVc: true,
   sameVc: true,
-player:true
-  
+  player:true,
   run: async (client, interaction, args) => {
-   const player = client.poru.players.get(interaction.guild.id);
-    player.destroy();
-
-    return interaction.reply({ embeds: [{ color: 'WHITE', description: '<:checkmark:912259227060437012> |  Disconnected the player!'}]})
-    
+  const player = client.poru.players.get(interaction.guild.id);
+  player.destroy();
+  return interaction.reply({ embeds: [{ color: 'WHITE', description: '<:checkmark:912259227060437012> |  Disconnected the player!'}]})  
   }
-} 
+}
