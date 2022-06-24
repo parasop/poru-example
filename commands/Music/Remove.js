@@ -13,7 +13,7 @@ module.exports = {
     if (args[0] > player.queue.length) return message.reply('Song not found.');
 
     player.queue.remove(args[0] - 1)
-    return message.reply(`Removed `)
+    return message.reply(`Removed track from queue`)
   }
 
 }

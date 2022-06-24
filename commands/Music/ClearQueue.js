@@ -16,7 +16,7 @@ module.exports = {
     
     let queueLength = player.queue.length
 
-    player.queue.length = 0;
+    player.queue.clear();
 
     message.reply(`Cleared \`${queueLength}\` from queue`)
 

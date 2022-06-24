@@ -1,3 +1,8 @@
+function moveArrayElement(arr, fromIndex, toIndex) {
+        arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
+        return arr;
+    }
+
 module.exports = {
   name: "jump",
   inVc: true,
@@ -9,15 +14,20 @@ module.exports = {
     let player = client.poru.players.get(message.guild.id)
 
     const position = Number(args[0]);
-  
-    if (!position || position < 0 || position > player.queue.size) {
-      return message.reply(`Usage: ${client.prefix}jump <Number of song in queue>`);   
-    }
     
-    player.queue.remove(0, position - 1)
-    
-    player.stop()
+  const from = args[0] ? parseInt(args[0], 10) : null;
+  const to = args[1] ? parseInt(args[1], 10) : null;
+     
+    if (from === null || to === null)
+        return message.reply(`invaild usage \n jump 10 1`)
 
-    return message.reply(`Jumped to ${args[0]} Skip`)
+        if (from === to || (isNaN(from) || from < 1 || from > dispatcher.queue.length) || (isNaN(to) || to < 1 || to > dispatcher.queue.length))
+            return message.reply('that number is out of queue length')
+    
+
+const moved = player.queue[from - 1];
+moveArrayElement(player.queue, from - 1, to - 1)
+    
+    return message.reply(`${moved.info.title} moved to \`${to}\``)
   }
 }

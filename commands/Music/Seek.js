@@ -14,6 +14,7 @@ if(!player.currentTrack.isSeekable){
 }
     
 player.seekTo(args[0]*1000)
+    
     return message.reply(`seeked ${args[0]}s`)
   }
 }

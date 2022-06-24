@@ -19,42 +19,33 @@ module.exports = {
     // Getting tracks
     const resolve = await client.poru.resolve(args.join(' '))
     const { loadType, tracks, playlistInfo } = resolve;
-    const track = tracks.shift();
-    track.requester = message.member.user;
 
+    console.log(resolve)
     // Adding in queue
-    if (loadType === "PLAYLIST_LOAD") {
+    if (loadType === "PLAYLIST_LOADED") {
 
       for (x of resolve.tracks) {
-        player.queue.add(x);
+         x.info.requester = message.author;
+          player.queue.add(x);
 
       }
-      message.channel.send({ content: `Added: \`${resolve.tracks.length}\`` });
-      if (!player.playing && !player.paused) return player.play();
+      message.channel.send({ content: `Added: \`${resolve.tracks.length} from ${resolve.playlistInfo.name}\`` });
+      if (!player.isPlaying && !player.isPaused) return player.play();
 
+    }else if(loadType ==="SEARCH_RESULT"|| loadType ==="TRACK_LOADED"){
+      const track = tracks.shift();
+    track.info.requester = message.author;
+
+     player.queue.add(track);
+        message.channel.send({ content: `Added: \`${track.info.title}\`` });
+        if (!player.isPlaying && !player.isPaused) return player.play();
+        
+    }else{
+      
+       return message.channel.send({ content: "There are no results found."})
     }
 
 
-    switch (resolve.loadType) {
-      case "NO_RESULTS":
-        message.channel.send({ content: "There are no results found." });
-        break;
-
-      case "TRACK_LOADED":
-        player.queue.add(resolve.tracks[0]);
-        message.channel.send({ content: `Added: \`${resolve.tracks[0].title}\`` });
-        if (!player.playing && !player.paused) return player.play();
-        break;
-
-      case "PLAYLIST_LOADED":
-        break;
-
-      case "SEARCH_RESULT":
-        player.queue.add(resolve.tracks[0]);
-        message.channel.send({ content: `Added: ${resolve.tracks[0].title}` });
-        if (!player.playing) return player.play();
-        break;
-    }
-
+  
   }
 }

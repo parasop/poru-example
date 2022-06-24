@@ -11,12 +11,12 @@ module.exports = {
 
      const queue = player.queue.length > 9 ? player.queue.slice(0, 9) : player.queue;
         const embed = new MessageEmbed()
-            .setColor("randm")
+            .setColor("WHITE")
             .setTitle('Now Playing')
             .setThumbnail(`https://img.youtube.com/vi/${player.currentTrack.identifier}/default.jpg`)
-            .setDescription(`[${player.currentTrack.title}](${player.currentTrack.uri}) [${ms(player.currentTrack.duration)}]`)
+            .setDescription(`[${player.currentTrack.info.title}](${player.currentTrack.uri}) [${ms(player.currentTrack.info.length)}]`)
             .setFooter(`queue length: ${player.queue.length} `);
-        if (queue.length) embed.addField('Up Next', queue.map((track, index) => `**${index + 1}.)** \`${track.title}\``).join('\n'));
+        if (queue.length) embed.addField('Up Next', queue.map((track, index) => `**${index + 1}.)** \`${track.info.title}\``).join('\n'));
         message.channel.send({ embeds: [ embed ] });
  }
 }

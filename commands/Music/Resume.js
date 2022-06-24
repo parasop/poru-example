@@ -7,11 +7,11 @@ module.exports = {
 
     let player = client.poru.players.get(message.guild.id)
 
-    if (!player.paused) {
-      message.reply("Player is Already Resumed")
+    if (!player.isPaused) {
+     return message.reply("Player is Already Resumed")
     }
 
-    if (player.paused) {
+    if (player.isPaused) {
       player.pause(false)
       return message.reply('Resumed')
     }

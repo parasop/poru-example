@@ -8,11 +8,11 @@ module.exports = {
     
     let player = client.poru.players.get(message.guild.id)
 
-    if(player.paused){
+    if(player.isPaused){
 message.reply("Player is Already Paused")
     }
     
-    if (!player.paused){
+    if (!player.isPaused){
       
       player.pause(true)
 
