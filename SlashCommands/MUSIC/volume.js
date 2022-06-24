@@ -2,8 +2,8 @@ const { MessageEmbed } = require('discord.js')
 const { ApplicationCommandOptionType } = require('discord-api-types/v9');
 
 module.exports = {
-  name: "resume",
-  description: "Resumes the player!",
+  name: "volume",
+  description: "set the Volume!",
   inVc: true,
   sameVc: true,
   
