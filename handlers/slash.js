@@ -35,7 +35,7 @@ client.on("ready",async ()=> {
 //registering slash comand
 
 await client.application.commands.set(slash)
-
+console.log("Slash Loaded")
 })
 
 }
