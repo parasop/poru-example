@@ -1,0 +1,13 @@
+{
+  "prefix":"?",
+  "owner":["433227453637328897","445531846118211588","580381333914648579", "857958962904694836","567704764813541376"],
+  "nodes":[
+    {
+      "name":"NODE_1",
+      "host":"Lavalink-hosting.jai110043.repl.co",
+      "port": 443,
+      "password": "youshallnotpass",
+      "secure": true
+    }
+  ]
+}

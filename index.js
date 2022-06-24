@@ -17,20 +17,22 @@ const client = new discord.Client({
 });
 client.login(process.env.TOKEN).catch(e => console.log("No token provided"))
 
-client.on('debug', console.log)
-      .on('warn', console.log)
 
 client.config = require("./config.json");
-client.poru = new Poru(client, client.config.nodes)
+client.poru = new Poru(client, client.config.nodes,{
+  spotify:{
+   clientID:"cb41529dc3bd4d8f8a240dbee0fff4e8",
+  clientSecret:"bcca82f42930498aa385a8289fdf276b"
+   }
+})
 client.commands = new discord.Collection();
 client.aliases = new discord.Collection();
 client.slash = new discord.Collection();
 
 //now creating interaction event
-["commands","events","slash"].forEach(handler => {
+["commands","events","slash","PoruEvent"].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 });
-
 
 
 

@@ -8,7 +8,7 @@
     "chunk": "0.0.3",
     "discord.js": "^13.8.0",
     "ms": "^2.1.3",
-    "poru": "^1.1.0"
+    "poru": "github:parasop/poru"
   },
   "devDependencies": {
     "node": "^16.14.2"
