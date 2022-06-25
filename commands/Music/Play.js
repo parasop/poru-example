@@ -20,7 +20,6 @@ module.exports = {
     const resolve = await client.poru.resolve(args.join(' '))
     const { loadType, tracks, playlistInfo } = resolve;
 
-    console.log(resolve)
     // Adding in queue
     if (loadType === "PLAYLIST_LOADED") {
 

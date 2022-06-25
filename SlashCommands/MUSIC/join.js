@@ -3,7 +3,7 @@ const { ApplicationCommandOptionType } = require('discord-api-types/v9');
 
 module.exports = {
   name: "join",
-  description:"Join channel"
+  description:"Join channel",
   inVc: true,
   sameVc: true,
   

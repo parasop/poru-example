@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 const { Poru } = require("poru");
-
+require("dotenv").config()
 const client = new discord.Client({
   messageCacheLifetime: 60,
   fetchAllMembers: false,
