@@ -24,7 +24,7 @@ module.exports = {
     // Adding in queue
     if (loadType === "PLAYLIST_LOADED") {
 
-      for (x of resolve.tracks) {
+      for (let x of resolve.tracks) {
          x.info.requester = message.author;
           player.queue.add(x);
 

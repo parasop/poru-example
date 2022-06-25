@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js')
 const { ApplicationCommandOptionType } = require('discord-api-types/v9');
 
 module.exports = {
-  name: "cliearQueue",
+  name: "clear",
   description: "cleans the queue!",
   inVc: true,
   sameVc: true,

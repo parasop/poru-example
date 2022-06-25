@@ -30,7 +30,7 @@ module.exports = {
     const { loadType, tracks, playlistInfo } = resolve;
     if (loadType === "PLAYLIST_LOADED") {
 
-      for (x of resolve.tracks) {
+      for (let x of resolve.tracks) {
          x.info.requester = interaction.member;
           player.queue.add(x);
 

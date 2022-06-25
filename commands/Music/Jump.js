@@ -21,7 +21,7 @@ module.exports = {
     if (from === null || to === null)
         return message.reply(`invaild usage \n jump 10 1`)
 
-        if (from === to || (isNaN(from) || from < 1 || from > dispatcher.queue.length) || (isNaN(to) || to < 1 || to > dispatcher.queue.length))
+        if (from === to || (isNaN(from) || from < 1 || from > player.queue.length) || (isNaN(to) || to < 1 || to > player.queue.length))
             return message.reply('that number is out of queue length')
     
 

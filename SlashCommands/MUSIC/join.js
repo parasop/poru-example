@@ -3,6 +3,7 @@ const { ApplicationCommandOptionType } = require('discord-api-types/v9');
 
 module.exports = {
   name: "join",
+  description:"Join channel"
   inVc: true,
   sameVc: true,
   
@@ -10,8 +11,8 @@ module.exports = {
 
     const player = await client.poru.createConnection({
       guild: message.guild.id,
-      voiceChannel: message.member.voice.channel.id,
-      textChannel: message.channel,
+      voiceChannel: interaction.member.voice.channel.id,
+      textChannel: interaction.channel,
       selfDeaf: true,
       selfMute: false,
     })
