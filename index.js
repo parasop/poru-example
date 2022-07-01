@@ -21,9 +21,14 @@ client.login(process.env.TOKEN).catch(e => console.log("No token provided"))
 client.config = require("./config.json");
 client.poru = new Poru(client, client.config.nodes,{
   spotify:{
-   clientID:"cb41529dc3bd4d8f8a240dbee0fff4e8",
-  clientSecret:"bcca82f42930498aa385a8289fdf276b"
-   }
+  clientID:"cb41529dc3bd4d8f8a240dbee0fff4e8",
+  clientSecret:"bcca82f42930498aa385a8289fdf276b",
+  playlistLimit:5
+   },
+  apple:{
+    playlistLimit:5
+  }
+  
 })
 client.commands = new discord.Collection();
 client.aliases = new discord.Collection();
