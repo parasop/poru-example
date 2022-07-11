@@ -1,5 +1,5 @@
 module.exports = {
-  name: "play",
+  name: "youtube",
   inVc: true,
   sameVc:true,
   args: true,

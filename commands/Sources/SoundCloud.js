@@ -1,5 +1,5 @@
 module.exports = {
-  name: "play",
+  name: "SoundCloud",
   inVc: true,
   sameVc:true,
   args: true,
@@ -17,8 +17,7 @@ module.exports = {
     })
 
     // Getting tracks
-    const resolve = await client.poru.resolve(args.join(' '))
-    console.log(resolve)
+    const resolve = await client.poru.soundcloud.fetch(args.join(' '))
     const { loadType, tracks, playlistInfo } = resolve;
 
     // Adding in queue
