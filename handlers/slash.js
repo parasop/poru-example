@@ -1,41 +1,40 @@
-let slash = []
-const { readdirSync } = require("fs");
-const ascii = require("ascii-table");
+const { readdirSync } = require('node:fs');
+const path = require('node:path');
+const Ascii = require('ascii-table');
+const table = new Ascii('Slash commands');
 
-//THIS ONE FROM V12
-
-// Create a new Ascii table
-let table = new ascii("Slash commands");
 module.exports = (client) => {
-    readdirSync("./SlashCommands/").forEach(dir => {
-        const commands = readdirSync(`./SlashCommands/${dir}/`).filter(file => file.endsWith(".js"));
-    
-        for (let file of commands) {
-            let pull = require(`../SlashCommands/${dir}/${file}`);
-    
-            if (pull.name) {
-                client.slash.set(pull.name, pull);
-                slash.push(pull);
-                table.addRow(file, '✅');
-            } else {
-                table.addRow(file, `❌  -> missing a help.name, or help.name is not a string.`);
-                continue;
-            }
-    
-            }
-    });
-    
-    console.log(table.toString());
+  const data = [];
 
+  readdirSync('./slashCommands/').forEach((dir) => {
+    const commands = readdirSync(`./slashCommands/${dir}/`).filter((file) =>
+      file.endsWith('.js'),
+    );
 
-client.on("ready",async ()=> {
+    for (let file of commands) {
+      const pull = require(path.join(
+        __dirname,
+        `../slashCommands/${dir}/${file}`,
+      ));
+      
+      if (pull.name) {
+        client.slashCommands.set(pull.name, pull);
+        data.push(pull);
+        table.addRow(file, '✅');
+      } else {
+        table.addRow(
+          file,
+          `❌  -> missing a help.name, or help.name is not a string.`,
+        );
+        continue;
+      }
+    }
+  });
 
+  console.log(table.toString());
 
-
-//registering slash comand
-
-await client.application.commands.set(slash)
-console.log("Slash Loaded")
-})
-
-}
+  client.on('ready', async () => {
+    await client.application.commands.set(data);
+    console.log('Registered slash commands.');
+  });
+};

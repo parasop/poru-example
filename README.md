@@ -3,20 +3,21 @@
 A Music Bot Template Based on [Poru](https://npmjs.com/poru) lavalink client ❤️
 
 ## Features
+
 - Poru wrapper based music client
 - Rich audio quality music
 - Inbuilt audio filters
 - 100% Compatible with Lavalink
 - Easy to use and setup
 
-
 ## Configration
 
 - enter your bot token in .env file with `TOKEN` variable
+
 ```js
 {
   "prefix": '.',
-  "owner":["YOUR DISCORD ID"],
+  "ownerId":["YOUR DISCORD ID"],
   "nodes": [{
     "name":"NODE_1",
     "host":"localhost", // your lavalink host
@@ -25,7 +26,9 @@ A Music Bot Template Based on [Poru](https://npmjs.com/poru) lavalink client ❤
   }]
 }
 ```
+
 ### Need help
+
 If you need help ! Feel free to join our [Support server](https://discord.gg/b3k6XNA5pw)
 
 - [ Note ] Support us by giving star to this reposity and by following [Paras](https://github.com/parasop) and by Donating [here](https://ko-fi.com/parasdev)
