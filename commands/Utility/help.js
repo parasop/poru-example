@@ -1,98 +1,107 @@
-const { MessageEmbed } = require("discord.js");
-const { readdirSync } = require("fs");
-module.exports = {
-  name: "help",
-  run: async (client, message, args) => {
-    let prefix = client.prefix
+const { EmbedBuilder } = require('discord.js');
+const { readdirSync } = require('fs');
 
+module.exports = {
+  name: 'help',
+  run: async (client, message, args) => {
+    const prefix = client.prefix;
 
     if (!args[0]) {
       let categories = [];
 
-      readdirSync("./commands/").forEach((dir) => {
+      readdirSync('./commands/').forEach((dir) => {
         const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
-          file.endsWith(".js")
+          file.endsWith('.js'),
         );
 
         const cmds = commands.map((command) => {
           let file = require(`../../commands/${dir}/${command}`);
 
-          if (!file.name) return "No command name.";
+          if (!file.name) return 'No command name.';
 
-          let name = file.name.replace(".js", "");
+          let name = file.name.replace('.js', '');
 
           return `\`${name}\``;
         });
 
-        let data = new Object();
+        const data = new Object();
 
         data = {
           name: dir.toUpperCase(),
-          value: cmds.length === 0 ? "UNKNOWN" : cmds.join(", "),
+          value: cmds.length === 0 ? 'Unknown' : cmds.join(', '),
         };
 
         categories.push(data);
       });
 
-      const embed = new MessageEmbed()
-        .setTitle("HELP MENU")
+      const embed = new EmbedBuilder()
+        .setTitle('Help Menu')
         .addFields(categories)
-
+        .setFooter({
+          text: `Requested by ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL(),
+        })
         .setFooter(
-          `Requested by ${message.author.tag}`,
-          message.author.displayAvatarURL({ dynamic: true })
-        ).setFooter(`Type ?help <command name> for details on a command!`)
+          `Type ${prefix}help <command name> for details on a command!`,
+        )
         .setTimestamp()
-        .setColor("WHITE");
+        .setColor('White');
+
       return message.reply({ embeds: [embed] });
     } else {
       const command =
         client.commands.get(args[0].toLowerCase()) ||
         client.commands.find(
-          (c) => c.aliases && c.aliases.includes(args[0].toLowerCase())
+          (c) => c.aliases && c.aliases.includes(args[0].toLowerCase()),
         );
 
       if (!command) {
-        const embed = new MessageEmbed()
-          .setTitle(`Invalid command! Use \`${prefix}help\` for all of my commands!`)
+        const embed = new EmbedBuilder()
+          .setTitle(
+            `Invalid command! Use \`${prefix}help\` for all of my commands!`,
+          )
 
-          .setColor("FF0000");
-        return message.channel.send(embed);
+          .setColor('Red');
+
+        return message.reply({ embeds: [embed] });
       }
 
-      const embed = new MessageEmbed()
-        .setTitle("Help Command: " + args[0])
-        .addField("PREFIX:", `\`?\``)
+      const embed = new EmbedBuilder()
+        .setTitle('Help Command: ' + args[0])
+        .addFields([
+          {
+            name: 'Command:',
+            value: command.name
+              ? `\`${command.name}\``
+              : 'No name for this command.',
+          },
+          {
+            name: 'Aliases:',
+            value: command.aliases
+              ? `\`${command.aliases.join('` `')}\``
+              : 'No aliases for this command.',
+          },
+          {
+            name: 'Usage:',
+            value: command.usage
+              ? `\`?${command.name} ${command.usage}\``
+              : `\`?${command.name}\``,
+          },
+        ])
         .addField(
-          "COMMAND:",
-          command.name ? `\`${command.name}\`` : "No name for this command."
-        )
-        .addField(
-          "ALIASES:",
-          command.aliases
-            ? `\`${command.aliases.join("` `")}\``
-            : "No aliases for this command."
-        )
-        .addField(
-          "USAGE:",
-          command.usage
-            ? `\`?${command.name} ${command.usage}\``
-            : `\`?${command.name}\``
-        )
-        .addField(
-          "DESCRIPTION:",
+          'DESCRIPTION:',
           command.description
             ? command.description
-            : "No description for this command."
+            : 'No description for this command.',
         )
         .setFooter(
           `Requested by ${message.author.tag}`,
-          message.author.displayAvatarURL({ dynamic: true })
+          message.author.displayAvatarURL(),
         )
         .setTimestamp()
-        .setColor("WHITE");
-      return message.reply({embeds:[embed]});
-    }
+        .setColor('White');
 
-  }
-}
+      return message.reply({ embeds: [embed] });
+    }
+  },
+};
