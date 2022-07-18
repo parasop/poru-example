@@ -5,7 +5,7 @@ module.exports = {
   description: 'Joins your voice channel',
   inVc: true,
   sameVc: true,
-  run: async (client, interaction) => {
+  run: (client, interaction) => {
     const player = client.poru.createConnection({
       guild: interaction.guild.id,
       voiceChannel: interaction.member.voice.channel.id,

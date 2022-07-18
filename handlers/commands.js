@@ -9,7 +9,7 @@ module.exports = (client) => {
       file.endsWith('.js'),
     );
 
-    for (let file of commands) {
+    for (const file of commands) {
       const command = require(`../commands/${dir}/${file}`);
 
       if (command.name) {

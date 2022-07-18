@@ -5,13 +5,13 @@ module.exports = {
   description: 'Clears the queue',
   inVc: true,
   sameVc: true,
-  run: async (client, interaction) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
     if (!player.queue.length) {
       const embed = new EmbedBuilder()
         .setColor('White')
-        .setDescription('Queue is empty!');
+        .setDescription('Queue is empty');
 
       return interaction.reply({
         embeds: [embed],

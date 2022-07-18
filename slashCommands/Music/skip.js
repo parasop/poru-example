@@ -5,7 +5,7 @@ module.exports = {
   description: 'Skips the current track',
   inVc: true,
   sameVc: true,
-  run: async (client, interaction) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
     player.stop();

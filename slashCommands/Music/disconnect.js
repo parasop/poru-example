@@ -6,7 +6,7 @@ module.exports = {
   inVc: true,
   sameVc: true,
   player: true,
-  run: async (client, interaction) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guildId);
 
     player.destroy();

@@ -21,9 +21,9 @@ module.exports = {
 
     // Adding in queue
     if (loadType === 'PLAYLIST_LOADED') {
-      for (let x of resolve.tracks) {
-        x.info.requester = message.author;
-        player.queue.add(x);
+      for (const track of resolve.tracks) {
+        track.info.requester = message.author;
+        player.queue.add(track);
       }
       message.channel.send({
         content: `Added: \`${resolve.tracks.length} from ${resolve.playlistInfo.name}\``,

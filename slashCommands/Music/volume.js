@@ -1,12 +1,10 @@
 const {
   ApplicationCommandOptionType,
-  ApplicationCommandType,
   EmbedBuilder,
 } = require('discord.js');
 
 module.exports = {
   name: 'volume',
-  type: ApplicationCommandType.ChatInput,
   description: 'Sets the volume of the player',
   inVc: true,
   sameVc: true,
@@ -20,14 +18,15 @@ module.exports = {
       max_value: 100,
     },
   ],
-  run: async (client, interaction) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
-    player.setVolume(args[0]);
+    const volume = interaction.options.getNumber('volume', true);
+    player.setVolume(volume);
 
     const embed = new EmbedBuilder()
       .setColor('White')
-      .setDescription(`Volume is set to ${args[0]}.`);
+      .setDescription(`Volume has been set to **${volume}%**.`);
 
     interaction.reply({
       embeds: [embed],

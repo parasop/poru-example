@@ -6,7 +6,7 @@ module.exports = {
   description: 'Show the server queue',
   inVc: true,
   sameVc: true,
-  run: async (client, interaction) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
     const queue =
@@ -23,14 +23,14 @@ module.exports = {
           player.currentTrack.info.length,
         )}]`,
       )
-      .setFooter({ text: `queue length: ${player.queue.length} ` });
-    
+      .setFooter({ text: `Queue length: ${player.queue.length} tracks` });
+
     if (queue.length)
       embed.addFields([
         {
           name: 'Up Next',
           value: queue
-            .map((track, index) => `**${index + 1}.)** \`${track.info.title}\``)
+            .map((track, index) => `**${index + 1}.** [${track.info.title}](${track.info.uri})`)
             .join('\n'),
         },
       ]);

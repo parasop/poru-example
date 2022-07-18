@@ -7,7 +7,7 @@ module.exports = {
     const prefix = client.prefix;
 
     if (!args[0]) {
-      let categories = [];
+      const categories = [];
 
       readdirSync('./commands/').forEach((dir) => {
         const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
@@ -15,16 +15,16 @@ module.exports = {
         );
 
         const cmds = commands.map((command) => {
-          let file = require(`../../commands/${dir}/${command}`);
+        const file = require(`../../commands/${dir}/${command}`);
 
           if (!file.name) return 'No command name.';
 
-          let name = file.name.replace('.js', '');
+          const name = file.name.replace('.js', '');
 
           return `\`${name}\``;
         });
 
-        const data = new Object();
+        let data = new Object();
 
         data = {
           name: dir.toUpperCase(),

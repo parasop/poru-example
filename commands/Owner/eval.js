@@ -11,9 +11,6 @@ module.exports = {
         if (typeof output !== 'string') {
           output = require('util').inspect(output, { depth: 0 });
         }
-        if (output.includes(client.token)) {
-          output = output.replace(this.client.token, 'LOL BRO');
-        }
         message.channel.send(`\`\`\`${output}\`\`\``, {
           code: 'js',
         });
@@ -21,8 +18,9 @@ module.exports = {
       .catch((err) => {
         err = err.toString();
         if (err.includes(client.token)) {
-          err = err.replace(this.client.token, 'ABE SALE');
+          err = err.replace(process.env.TOKEN, '');
         }
+
         message.channel.send(err, {
           code: 'js',
         });

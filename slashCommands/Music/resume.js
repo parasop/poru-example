@@ -1,36 +1,30 @@
-const { MessageEmbed } = require('discord.js');
-const { ApplicationCommandOptionType } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
   name: 'resume',
-  description: 'Resumes the player!',
+  description: 'Resumes the player',
   inVc: true,
   sameVc: true,
-
-  run: async (client, interaction, args) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
     if (!player.isPaused) {
+      const embed = new EmbedBuilder()
+        .setColor('White')
+        .setDescription('Player is not paused');
+
       interaction.reply({
-        embeds: [
-          {
-            color: 'WHITE',
-            title: ` Player is Already Resumed`,
-          },
-        ],
+        embeds: [embed],
       });
     } else {
-      if (player.isPaused) {
-        player.pause(false);
-        return interaction.reply({
-          embeds: [
-            {
-              color: 'WHITE',
-              title: `Resumed the player!`,
-            },
-          ],
-        });
-      }
+      const embed = new EmbedBuilder()
+        .setColor('White')
+        .setDescription('Resumed the player');
+
+      player.pause(false);
+      interaction.reply({
+        embeds: [embed],
+      });
     }
   },
-}; // try it
+};

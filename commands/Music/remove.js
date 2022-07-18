@@ -5,10 +5,10 @@ module.exports = {
   sameVc: true,
   player: true,
   current: true,
-  run: async (client, message, args) => {
+  run: (client, message, args) => {
     const player = client.poru.players.get(message.guild.id);
 
-    if (args[0] == 1)
+    if (args[0] === '1')
       return message.reply(`Cannot remove a song that is already playing.`);
     if (args[0] > player.queue.length) return message.reply('Track not found.');
 

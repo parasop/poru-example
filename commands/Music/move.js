@@ -1,11 +1,17 @@
+
+function moveArrayElement(arr, fromIndex, toIndex) {
+  arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
+  return arr;
+}
+
 module.exports = {
   name: 'jump',
   inVc: true,
   sameVc: true,
   player: true,
   current: true,
-  run: async (client, message, args) => {
-    let player = client.poru.players.get(message.guild.id);
+  run: (client, message, args) => {
+    const player = client.poru.players.get(message.guild.id);
 
     const position = Number(args[0]);
 
@@ -29,11 +35,6 @@ module.exports = {
     const moved = player.queue[from - 1];
     moveArrayElement(player.queue, from - 1, to - 1);
 
-    return message.reply(`Moved ${moved.info.title}  to \`${to}\``);
+    return message.reply(`Moved ${moved.info.title} to \`${to}\``);
   },
 };
-
-function moveArrayElement(arr, fromIndex, toIndex) {
-  arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
-  return arr;
-}
