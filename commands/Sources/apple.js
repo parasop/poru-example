@@ -20,7 +20,9 @@ module.exports = {
         track.info.requester = message.author;
         player.queue.add(track);
       }
-      message.channel.send(`Added: \`${tracks.length} from ${playlistInfo.name}\``);
+      message.channel.send(
+        `Added: \`${tracks.length} from ${playlistInfo.name}\``,
+      );
       if (!player.isPlaying && !player.isPaused) return player.play();
     } else if (loadType === 'SEARCH_RESULT' || loadType === 'TRACK_LOADED') {
       const track = tracks.shift();

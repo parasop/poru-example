@@ -21,7 +21,7 @@ module.exports = {
       .setColor('White')
       .setDescription('Shuffled the queue');
 
-   return interaction.reply({
+    return interaction.reply({
       embeds: [embed],
     });
   },

@@ -15,7 +15,7 @@ module.exports = {
         );
 
         const cmds = commands.map((command) => {
-        const file = require(`../../commands/${dir}/${command}`);
+          const file = require(`../../commands/${dir}/${command}`);
 
           if (!file.name) return 'No command name.';
 
@@ -87,13 +87,12 @@ module.exports = {
               ? `\`?${command.name} ${command.usage}\``
               : `\`?${command.name}\``,
           },
-        {
-          name: 'description',
-          value:     command.description
-            ? command.description
-            : 'No description for this command.',
-      
-        }
+          {
+            name: 'description',
+            value: command.description
+              ? command.description
+              : 'No description for this command.',
+          },
         ])
         .setFooter(
           `Requested by ${message.author.tag}`,
