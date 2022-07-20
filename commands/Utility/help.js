@@ -3,7 +3,7 @@ const { readdirSync } = require('fs');
 
 module.exports = {
   name: 'help',
-  run: async (client, message, args) => {
+  run: (client, message, args) => {
     const prefix = client.prefix;
 
     if (!args[0]) {
@@ -67,7 +67,7 @@ module.exports = {
       }
 
       const embed = new EmbedBuilder()
-        .setTitle('Help Command: ' + args[0])
+        .setTitle(`Help Command: ${args[0]}`)
         .addFields([
           {
             name: 'Command:',
@@ -87,13 +87,14 @@ module.exports = {
               ? `\`?${command.name} ${command.usage}\``
               : `\`?${command.name}\``,
           },
-        ])
-        .addField(
-          'DESCRIPTION:',
-          command.description
+        {
+          name: 'description',
+          value:     command.description
             ? command.description
             : 'No description for this command.',
-        )
+      
+        }
+        ])
         .setFooter(
           `Requested by ${message.author.tag}`,
           message.author.displayAvatarURL(),

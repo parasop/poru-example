@@ -1,4 +1,4 @@
-module.exports.run = async (client, message) => {
+module.exports.run = (client, message) => {
   //simply ignore bot and dm messages
   if (
     message.author.bot ||

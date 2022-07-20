@@ -1,7 +1,7 @@
 const { InteractionType } = require('discord.js');
 
 module.exports.run = async (client, interaction) => {
-  if (interaction.type == InteractionType.ApplicationCommand) {
+  if (interaction.type === InteractionType.ApplicationCommand) {
     const command = client.slash.get(interaction.commandName);
     if (!command) return;
 

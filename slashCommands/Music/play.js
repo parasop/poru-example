@@ -37,7 +37,7 @@ module.exports = {
 
       const embed = new EmbedBuilder()
       .setColor('White')
-      .setDescription(`Added \`${resolve.tracks.length}\` tracks from ${resolve.playlistInfo.name}`)
+      .setDescription(`Added \`${tracks.length}\` tracks from ${playlistInfo.name}`)
       
       await interaction.editReply({
         embeds: [embed],

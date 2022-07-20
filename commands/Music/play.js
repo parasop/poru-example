@@ -12,7 +12,7 @@ module.exports = {
       selfMute: false,
     });
 
-    const resolve = await client.poru.resolve(query);
+    const resolve = await client.poru.resolve(args.join(' '));
     const { loadType, tracks, playlistInfo } = resolve;
 
     if (loadType === 'PLAYLIST_LOADED') {

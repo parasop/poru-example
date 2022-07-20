@@ -1,6 +1,6 @@
 module.exports = {
   name: 'eval',
-  run: async (client, message) => {
+  run: (client, message) => {
     if (!client.config.ownerIds.includes(message.author.id)) return;
 
     const content = message.content.split(' ').slice(1).join(' ');

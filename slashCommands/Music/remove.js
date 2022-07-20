@@ -12,7 +12,7 @@ module.exports = {
     required: true,
     min_value: 1
   }],
-  run: async (client, interaction) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
     const track = interaction.options.getNumber('track');

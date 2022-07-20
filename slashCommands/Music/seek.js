@@ -15,7 +15,7 @@ module.exports = {
     required: true,
     min_value:0 
   }],
-  run: (client, interaction, args) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
     const position = interaction.options.getNumber('position', true);
