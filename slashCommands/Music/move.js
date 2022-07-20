@@ -27,7 +27,7 @@ module.exports = {
 
     const player = client.poru.players.get(interaction.guild.id);
 
-    const from = interaction.options.getNumber('track')';
+    const from = interaction.options.getNumber('track');
     const to = interaction.options.getNumber('position');
 
     if (

@@ -13,8 +13,6 @@ module.exports = {
   run: (client, message, args) => {
     const player = client.poru.players.get(message.guild.id);
 
-    const position = Number(args[0]);
-
     const from = args[0] ? parseInt(args[0], 10) : null;
     const to = args[1] ? parseInt(args[1], 10) : null;
 

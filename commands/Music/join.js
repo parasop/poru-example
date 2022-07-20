@@ -2,7 +2,7 @@ module.exports = {
   name: 'join',
   inVc: true,
   run: (client, message) => {
-    const player = client.poru.createConnection({
+   client.poru.createConnection({
       guild: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
       textChannel: message.channel,
