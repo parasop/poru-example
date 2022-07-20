@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require('discord.js');
 const ms = require('ms');
 
-module.exports.run = async (client, player, track) => {
+module.exports.run = (client, player, track) => {
   const embed = new EmbedBuilder()
     .setAuthor({
       name: `Now Playing`,
@@ -26,5 +26,5 @@ ${ms(track.info.length)}
     )
     .setImage(track.info.image);
 
-  player.textChannel.send({ embeds: [embed] });
+  return player.textChannel.send({ embeds: [embed] });
 };

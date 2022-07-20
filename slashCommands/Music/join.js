@@ -4,9 +4,8 @@ module.exports = {
   name: 'join',
   description: 'Joins your voice channel',
   inVc: true,
-  sameVc: true,
-  run: async (client, interaction) => {
-    const player = client.poru.createConnection({
+  run: (client, interaction) => {
+    client.poru.createConnection({
       guild: interaction.guild.id,
       voiceChannel: interaction.member.voice.channel.id,
       textChannel: interaction.channel,
@@ -18,7 +17,7 @@ module.exports = {
       .setColor('White')
       .setDescription(`Joined ${interaction.member.voice.channel.toString()}`);
 
-    interaction.reply({
+    return interaction.reply({
       embeds: [embed],
     });
   },

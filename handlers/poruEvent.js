@@ -8,7 +8,7 @@ module.exports = (client) => {
     __dirname.replace('handlers', 'poruEvents'),
   ).filter((file) => file.endsWith('.js'));
 
-  for (let file of commands) {
+  for (const file of commands) {
     try {
       const pull = require(`${__dirname.replace(
         'handlers',

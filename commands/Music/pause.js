@@ -4,11 +4,11 @@ module.exports = {
   sameVc: true,
   player: true,
   current: true,
-  run: async (client, message, args) => {
+  run: (client, message) => {
     const player = client.poru.players.get(message.guild.id);
 
     if (player.isPaused) {
-      return message.reply('Player is already paused.');
+      message.reply('Player is already paused.');
     } else {
       player.pause(true);
 

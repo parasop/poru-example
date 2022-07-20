@@ -5,9 +5,9 @@ module.exports = {
   description: 'pause the player',
   inVc: true,
   sameVc: true,
-  run: async (client, interaction) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
-    
+
     if (player.isPaused) {
       const embed = new EmbedBuilder()
         .setColor('White')
@@ -24,7 +24,7 @@ module.exports = {
       .setColor('White')
       .setDescription('Paused the player');
 
-    interaction.reply({
+    return interaction.reply({
       embeds: [embed],
     });
   },

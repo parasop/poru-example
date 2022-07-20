@@ -11,12 +11,12 @@ module.exports = (client) => {
       file.endsWith('.js'),
     );
 
-    for (let file of commands) {
+    for (const file of commands) {
       const pull = require(path.join(
         __dirname,
         `../slashCommands/${dir}/${file}`,
       ));
-      
+
       if (pull.name) {
         client.slashCommands.set(pull.name, pull);
         data.push(pull);

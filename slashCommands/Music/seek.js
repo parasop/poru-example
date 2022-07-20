@@ -1,34 +1,42 @@
-const { ApplicationCommandOptionType, ApplicationCommandType, EmbedBuilder } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
   name: 'seek',
-  description: 'seek the player!',
+  description: 'Seek the player',
   inVc: true,
   sameVc: true,
-  run: async (client, interaction, args) => {
+  options: [
+    {
+      name: 'position',
+      description: 'New position of the player',
+      type: ApplicationCommandOptionType.Number,
+      required: true,
+      min_value: 0,
+    },
+  ],
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
-    
+
+    const position = interaction.options.getNumber('position', true);
+
     if (!player.currentTrack.isSeekable) {
       const embed = new EmbedBuilder()
+        .setColor('White')
+        .setColor('Track is not seekable');
+
       interaction.reply({
-        embeds: [
-          {
-            color: 'WHITE',
-            description: `Track is not seekable`,
-          },
-        ],
+        embeds: [embed],
       });
     }
 
-    player.seekTo(args[0] * 1000);
+    player.seekTo(position * 1000);
+
+    const embed = new EmbedBuilder()
+      .setColor('White')
+      .setDescription(`Seeked to ${position}`);
 
     return interaction.reply({
-      embeds: [
-        {
-          color: 'WHITE',
-          description: `Seeked to \`${args[0]}\``,
-        },
-      ],
+      embeds: [embed],
     });
   },
 };

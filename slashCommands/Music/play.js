@@ -1,4 +1,4 @@
-const { ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
   name: 'play',
@@ -14,11 +14,8 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
-    await interaction.deferReply(); // this will give time to reply
+    await interaction.deferReply();
 
-    const memberChannel = interaction.member.voice.channelId;
-
-    // Spawning lavalink player
     const player = client.poru.createConnection({
       guild: interaction.guildId,
       voiceChannel: interaction.member.voice.channelId,
@@ -27,19 +24,25 @@ module.exports = {
       selfMute: false,
     });
 
-    // Getting tracks
     const resolve = await client.poru.resolve(
       interaction.options.getString('query', true),
     );
 
     const { loadType, tracks, playlistInfo } = resolve;
     if (loadType === 'PLAYLIST_LOADED') {
-      for (let x of resolve.tracks) {
-        x.info.requester = interaction.member;
-        player.queue.add(x);
+      for (const track of resolve.tracks) {
+        track.info.requester = interaction.member;
+        player.queue.add(track);
       }
-      interaction.editReply({
-        content: `Added: \`${resolve.tracks.length} from ${resolve.playlistInfo.name}\``,
+
+      const embed = new EmbedBuilder()
+        .setColor('White')
+        .setDescription(
+          `Added \`${tracks.length}\` tracks from ${playlistInfo.name}`,
+        );
+
+      await interaction.editReply({
+        embeds: [embed],
       });
       if (!player.isPlaying && !player.isPaused) return player.play();
     } else if (loadType === 'SEARCH_RESULT' || loadType === 'TRACK_LOADED') {
@@ -47,19 +50,19 @@ module.exports = {
       track.info.requester = interaction.member;
 
       player.queue.add(track);
-      interaction.editReply({
-        embeds: [
-          {
-            color: 'WHITE',
-            description: `Added: \`${track.info.title}\``,
-          },
-        ],
+
+      const embed = new EmbedBuilder()
+        .setColor('White')
+        .setDescription(`Added [${track.info.title}](${track.info.uri})`);
+
+      await interaction.editReply({
+        embeds: [embed],
       });
       if (!player.isPlaying && !player.isPaused) return player.play();
     } else {
-      return interaction.editReply({
-        content: '**There are no results found.**',
-      });
+      return interaction.editReply(
+        'There were no results found for your query.',
+      );
     }
   },
 };

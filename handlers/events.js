@@ -8,15 +8,14 @@ module.exports = (client) => {
     (file) => file.endsWith('.js'),
   );
 
-  for (let file of files) {
+  for (const file of files) {
     try {
       const event = require(`${__dirname.replace(
         'handlers',
         'events',
       )}/${file}`);
 
-      
-      eventName = event.event || file.replace('.js', '');
+      const eventName = event.event || file.replace('.js', '');
       client.on(eventName, event.run.bind(null, client));
       table.addRow(eventName, '✅');
     } catch (err) {
