@@ -24,7 +24,7 @@ module.exports = {
       .setColor('White')
       .setDescription('Paused the player');
 
-    interaction.reply({
+    return interaction.reply({
       embeds: [embed],
     });
   },

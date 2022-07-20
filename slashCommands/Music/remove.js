@@ -1,29 +1,36 @@
-const { MessageEmbed } = require('discord.js');
-const { ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
   name: 'remove',
   description: 'remove the player!',
   inVc: true,
   sameVc: true,
-  run: async (client, interaction, args) => {
+  options: [{
+    name: 'track',
+    description: 'Remove a track from the queue.',
+    type: ApplicationCommandOptionType.Number,
+    required: true,
+    min_value: 1
+  }],
+  run: async (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
-    if (args[0] == 0)
-      return interaction.reply({
-        color: 'WHITE',
-        description: "can't remove the song which is already playing",
-      });
-    if (args[0] > player.queue.length)
-      return interaction.reply({
-        color: 'WHITE',
-        description: 'Song not found!',
-      });
+    const track = interaction.options.getNumber('track');
+    
+    if (track > player.queue.length) {
+      const embed = new EmbedBuilder()
+      .setColor('White')
+      .setDescription('Track not found')
+      
+      return interaction.reply({ embeds: [embed] });
+    }
+    
+    player.queue.remove(track - 1);
 
-    player.queue.remove(args[0] - 1);
-    return interaction.reply({
-      color: 'WHITE',
-      description: 'Remove track from queue',
-    });
+    const embed = new EmbedBuilder()
+    .setColor('White')
+    .setDescription('Removed track from queue')
+    
+    return interaction.reply({ embeds: [embed] });
   },
-}; // try it
+};

@@ -17,7 +17,7 @@ A Music Bot Template Based on [Poru](https://npmjs.com/poru) lavalink client ❤
 ```js
 {
   "prefix": '.',
-  "ownerId":["YOUR DISCORD ID"],
+  "ownerIds":["YOUR DISCORD ID"],
   "nodes": [{
     "name":"NODE_1",
     "host":"localhost", // your lavalink host

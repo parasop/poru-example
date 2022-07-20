@@ -18,7 +18,7 @@ module.exports = {
       .setColor('White')
       .setDescription(`Joined ${interaction.member.voice.channel.toString()}`);
 
-    interaction.reply({
+     return  interaction.reply({
       embeds: [embed],
     });
   },

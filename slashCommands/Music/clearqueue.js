@@ -26,7 +26,7 @@ module.exports = {
       .setColor('White')
       .setDescription(`Cleared \`${length}\` from queue`);
 
-    interaction.reply({
+    return interaction.reply({
       embeds: [embed],
     });
   },

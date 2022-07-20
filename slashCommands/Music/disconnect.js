@@ -15,7 +15,7 @@ module.exports = {
       .setColor('White')
       .setDescription('Disconnected the player!');
 
-    interaction.reply({
+    return interaction.reply({
       embeds: [embed],
     });
   },

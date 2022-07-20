@@ -36,7 +36,7 @@ module.exports = {
     .setColor('White')
     .setDescription(`Seeked to ${position}`)
     
-    interaction.reply({
+    return interaction.reply({
       embeds: [embed],
     });
   },
