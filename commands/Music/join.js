@@ -3,9 +3,9 @@ module.exports = {
   inVc: true,
   run: (client, message) => {
     client.poru.createConnection({
-      guild: message.guild.id,
+      guildId: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
-      textChannel: message.channel,
+      textChannel: message.channel.id,
       selfDeaf: true,
       selfMute: false,
     });

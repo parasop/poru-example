@@ -17,9 +17,9 @@ module.exports = {
     await interaction.deferReply();
 
     const player = client.poru.createConnection({
-      guild: interaction.guildId,
+      guildId: interaction.guildId,
       voiceChannel: interaction.member.voice.channelId,
-      textChannel: interaction.channel,
+      textChannel: interaction.channel.id,
       selfDeaf: true,
       selfMute: false,
     });

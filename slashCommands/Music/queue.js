@@ -15,13 +15,11 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setColor('White')
       .setTitle('Now Playing')
-      .setThumbnail(
-        `https://img.youtube.com/vi/${player.currentTrack.identifier}/default.jpg`,
-      )
+      .setThumbnail(player.currentTrack.info.image)
       .setDescription(
-        `[${player.currentTrack.info.title}](${player.currentTrack.uri}) [${ms(
-          player.currentTrack.info.length,
-        )}]`,
+        `[${player.currentTrack.info.title}](${
+          player.currentTrack.info.uri
+        }) [${ms(player.currentTrack.info.length)}]`,
       )
       .setFooter({ text: `Queue length: ${player.queue.length} tracks` });
 

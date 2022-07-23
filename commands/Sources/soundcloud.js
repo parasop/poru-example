@@ -1,13 +1,13 @@
 module.exports = {
-  name: 'SoundCloud',
+  name: 'soundcloud',
   inVc: true,
   sameVc: true,
   args: true,
   run: async (client, message, args) => {
-    const player = await client.poru.createConnection({
-      guild: message.guild.id,
+    const player = client.poru.createConnection({
+      guildId: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
-      textChannel: message.channel,
+      textChannel: message.channel.id,
       selfDeaf: true,
       selfMute: false,
     });
