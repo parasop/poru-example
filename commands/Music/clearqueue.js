@@ -15,6 +15,6 @@ module.exports = {
 
     player.queue.clear();
 
-    message.reply(`Cleared \`${length}\` tracks from the queue.`);
+    return message.reply(`Cleared \`${length}\` tracks from the queue.`);
   },
 };
