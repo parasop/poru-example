@@ -30,7 +30,10 @@ module.exports = {
         {
           name: 'Up Next',
           value: queue
-            .map((track, index) => `**${index + 1}.** [${track.info.title}](${track.info.uri})`)
+            .map(
+              (track, index) =>
+                `**${index + 1}.** [${track.info.title}](${track.info.uri})`,
+            )
             .join('\n'),
         },
       ]);

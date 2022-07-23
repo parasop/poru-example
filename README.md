@@ -1,6 +1,6 @@
 # [Poru Music](https://discord.com/api/oauth2/authorize?client_id=987704017410985985&permissions=8&scope=applications.commands%20bot)
 
-A Music Bot Template Based on [Poru](https://npmjs.com/poru) lavalink client ❤️
+A Music Bot Template based on [Poru](https://npmjs.com/poru) lavalink client ❤️
 
 ## Features
 
@@ -12,7 +12,7 @@ A Music Bot Template Based on [Poru](https://npmjs.com/poru) lavalink client ❤
 
 ## Configration
 
-- enter your bot token in .env file with `TOKEN` variable
+- Enter your bot token in .env file with `TOKEN` variable
 
 ```js
 {
@@ -20,7 +20,7 @@ A Music Bot Template Based on [Poru](https://npmjs.com/poru) lavalink client ❤
   "ownerIds":["YOUR DISCORD ID"],
   "nodes": [{
     "name":"NODE_1",
-    "host":"localhost", // your lavalink host
+    "host":"localhost", // Your lavalink host
     "port": 2333, // Your lavalink port
     "password": "youshallnotpass" // Your lavalink pass
   }]
@@ -29,6 +29,6 @@ A Music Bot Template Based on [Poru](https://npmjs.com/poru) lavalink client ❤
 
 ### Need help
 
-If you need help ! Feel free to join our [Support server](https://discord.gg/b3k6XNA5pw)
+If you need help then feel free to join our [Support server](https://discord.gg/b3k6XNA5pw).
 
-- [ Note ] Support us by giving star to this reposity and by following [Paras](https://github.com/parasop) and by Donating [here](https://ko-fi.com/parasdev)
+- [ Note ] Support us by starring this repository, following [Paras](https://github.com/parasop) and by Donating [here](https://ko-fi.com/parasdev).

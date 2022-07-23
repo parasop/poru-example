@@ -1,5 +1,5 @@
 module.exports.run = (client, message) => {
-  //simply ignore bot and dm messages
+  //Ignoring bot, system, dm and webhook messages
   if (
     message.author.bot ||
     !message.guild ||
@@ -8,27 +8,17 @@ module.exports.run = (client, message) => {
   )
     return;
 
-  //if message dont start with prefix return it
   if (!message.content.startsWith(client.config.prefix)) return;
-
-  //if message member not found find from fetch
-  if (!message.member) message.guild.fetchMembers(message);
-
-  //SCLICE FOR REMOVE PREFIX FROM ARGS, trim for remove spaces and split for make content in array
   const args = message.content
     .slice(client.config.prefix.length)
     .trim()
     .split(/ +/g);
 
-  //take command from args first content example !help mod  taking help from it
   const cmd = args.shift().toLowerCase();
-
-  //if command lengh is 0 example !  so it will return
   if (cmd.length === 0) return;
-
   let command = client.commands.get(cmd);
 
-  //finding command from aliases
+  //Finding command from aliases
   if (!command) command = client.commands.get(client.aliases.get(cmd));
   const player = client.poru.players.get(message.guild.id);
   const memberChannel = message.member.voice.channelId;
@@ -36,30 +26,31 @@ module.exports.run = (client, message) => {
 
   if (!command) return;
 
-  //Voice Only
+  //Voice Channel only
   if (command.inVc && !memberChannel) {
     return message.channel.send(
       'You must be in a Voice Channel to use this Command!',
     );
   }
-  //same vc
+
+  //Same Voice Channel only
   if (command.sameVc && player && botChannel !== memberChannel) {
     return message.channel.send('You must be in the same Voice Channel as me!');
   }
-  //player
+
+  //Player required
   if (command.player && !player) {
-    return `No Player exists for this Guild!`;
+    return message.channel.send('No player exists for this server.');
   }
+
   if (command.current && !player.currentTrack) {
-    message.channel.send('There is nothing playing right now!');
+    message.channel.send('There is nothing playing right now.');
   }
 
   //args
   if (command.args && !args.length) {
-    return message.channel.send(`You didn't provide any arguments!`);
+    return message.channel.send(`You didn't provide any arguments.`);
   }
-  if (command.owner) {
-    if (message.author.id !== client.application?.owner.id) return;
-  }
-  if (command) command.run(client, message, args);
+
+  command.run(client, message, args);
 };

@@ -14,8 +14,8 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
-    await interaction.deferReply(); 
-    
+    await interaction.deferReply();
+
     const player = client.poru.createConnection({
       guild: interaction.guildId,
       voiceChannel: interaction.member.voice.channelId,
@@ -36,9 +36,11 @@ module.exports = {
       }
 
       const embed = new EmbedBuilder()
-      .setColor('White')
-      .setDescription(`Added \`${tracks.length}\` tracks from ${playlistInfo.name}`)
-      
+        .setColor('White')
+        .setDescription(
+          `Added \`${tracks.length}\` tracks from ${playlistInfo.name}`,
+        );
+
       await interaction.editReply({
         embeds: [embed],
       });
@@ -50,15 +52,17 @@ module.exports = {
       player.queue.add(track);
 
       const embed = new EmbedBuilder()
-      .setColor('White')
-      .setDescription(`Added [${track.info.title}](${track.info.uri})`)
-      
-     await interaction.editReply({
+        .setColor('White')
+        .setDescription(`Added [${track.info.title}](${track.info.uri})`);
+
+      await interaction.editReply({
         embeds: [embed],
       });
       if (!player.isPlaying && !player.isPaused) return player.play();
     } else {
-      return interaction.editReply('There were no results found for your query.');
+      return interaction.editReply(
+        'There were no results found for your query.',
+      );
     }
   },
 };
