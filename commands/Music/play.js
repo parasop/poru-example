@@ -8,8 +8,7 @@ module.exports = {
       guildId: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
       textChannel: message.channel.id,
-      selfDeaf: true,
-      selfMute: false,
+      deaf:true
     });
 
     const resolve = await client.poru.resolve(args.join(' '));
