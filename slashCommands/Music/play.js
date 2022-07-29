@@ -20,8 +20,7 @@ module.exports = {
       guildId: interaction.guildId,
       voiceChannel: interaction.member.voice.channelId,
       textChannel: interaction.channel.id,
-      selfDeaf: true,
-      selfMute: false,
+      deaf: true,
     });
 
     const resolve = await client.poru.resolve(
