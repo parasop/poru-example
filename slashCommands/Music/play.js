@@ -17,11 +17,10 @@ module.exports = {
     await interaction.deferReply();
 
     const player = client.poru.createConnection({
-      guild: interaction.guildId,
+      guildId: interaction.guildId,
       voiceChannel: interaction.member.voice.channelId,
-      textChannel: interaction.channel,
-      selfDeaf: true,
-      selfMute: false,
+      textChannel: interaction.channel.id,
+      deaf: true,
     });
 
     const resolve = await client.poru.resolve(

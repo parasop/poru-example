@@ -6,11 +6,10 @@ module.exports = {
   inVc: true,
   run: (client, interaction) => {
     client.poru.createConnection({
-      guild: interaction.guild.id,
+      guildId: interaction.guild.id,
       voiceChannel: interaction.member.voice.channel.id,
-      textChannel: interaction.channel,
-      selfDeaf: true,
-      selfMute: false,
+      textChannel: interaction.channel.id,
+      deaf: true,
     });
 
     const embed = new EmbedBuilder()

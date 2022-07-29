@@ -10,21 +10,15 @@ module.exports.run = (client, player, track) => {
     .setColor('White')
     .setDescription(
       `
-**TRACK**
-[${track.info.title}](${track.info.uri})
-
-**AUTHOR**
-${track.info.author}
-
-**SOURCE**
-${track.info.sourceName}
-
-**DURATION**
-${ms(track.info.length)}
+**Track**: [${track.info.title}](${track.info.uri})
+**Author**: ${track.info.author}
+**Source**: ${track.info.sourceName}
+**Duration**: ${ms(track.info.length)}
 
 `,
     )
     .setImage(track.info.image);
-let channel = client.channels.cache.get(player.textChannel)
-  return channel.send({ embeds: [embed] });
+
+  const channel = client.channels.cache.get(player.textChannel);
+  return channel?.send({ embeds: [embed] });
 };

@@ -2,7 +2,7 @@ const { InteractionType } = require('discord.js');
 
 module.exports.run = async (client, interaction) => {
   if (interaction.type === InteractionType.ApplicationCommand) {
-    const command = client.slash.get(interaction.commandName);
+    const command = client.slashCommands.get(interaction.commandName);
     if (!command) return;
 
     const player = client.poru.players.get(interaction.guild.id);
@@ -17,14 +17,16 @@ module.exports.run = async (client, interaction) => {
     }
     //Same Voice Channel only
     if (command.sameVc && player && botChannel !== memberChannel) {
-      return interaction.reply('You must be in the same Voice channel as mine to use this command.');
+      return interaction.reply(
+        'You must be in the same Voice channel as mine to use this command.',
+      );
     }
-    
+
     //Player check
     if (command.player && !player) {
       return interaction.followUp(`No player exists for this server.`);
     }
-    
+
     if (command.current && !player.currentTrack) {
       interaction.followUp('There is nothing playing right now.');
     }

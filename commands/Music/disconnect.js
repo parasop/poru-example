@@ -8,6 +8,6 @@ module.exports = {
 
     player.destroy();
 
-    message.reply('Disconnected the player.');
+    return message.reply('Disconnected the player.');
   },
 };

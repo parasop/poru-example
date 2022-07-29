@@ -3,11 +3,10 @@ module.exports = {
   inVc: true,
   run: (client, message) => {
     client.poru.createConnection({
-      guild: message.guild.id,
+      guildId: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
-      textChannel: message.channel,
-      selfDeaf: true,
-      selfMute: false,
+      textChannel: message.channel.id,
+      deaf: true,
     });
 
     message.reply(`Joined ${message.member.voice.channel.toString()}.`);

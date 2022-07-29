@@ -5,5 +5,6 @@ module.exports.run = (client, player, track, error) => {
     .setTitle(`${error.exception.message}`)
     .setDescription(`[${track.info.title}](${track.info.uri})`);
 
-  return player.textChannel.send({ embeds: [embed] });
+  const channel = client.channels.cache.get(player.textChannel);
+  return channel?.send({ embeds: [embed] });
 };

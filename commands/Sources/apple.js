@@ -5,11 +5,10 @@ module.exports = {
   args: true,
   run: async (client, message, args) => {
     const player = client.poru.createConnection({
-      guild: message.guild.id,
+      guildId: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
-      textChannel: message.channel,
-      selfDeaf: true,
-      selfMute: false,
+      textChannel: message.channel.id,
+      deaf: true,
     });
 
     const resolve = await client.poru.apple.fetch(args.join(' '));
