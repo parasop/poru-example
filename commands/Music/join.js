@@ -6,8 +6,7 @@ module.exports = {
       guildId: message.guild.id,
       voiceChannel: message.member.voice.channel.id,
       textChannel: message.channel.id,
-      selfDeaf: true,
-      selfMute: false,
+      deaf: true,
     });
 
     message.reply(`Joined ${message.member.voice.channel.toString()}.`);
