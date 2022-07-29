@@ -31,7 +31,6 @@ module.exports = (client) => {
     }
   });
 
-  console.log(client.slashCommands);
   console.log(table.toString());
 
   client.on('ready', async () => {
