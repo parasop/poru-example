@@ -9,8 +9,7 @@ module.exports = {
       guildId: interaction.guild.id,
       voiceChannel: interaction.member.voice.channel.id,
       textChannel: interaction.channel.id,
-      selfDeaf: true,
-      selfMute: false,
+      deaf: true,
     });
 
     const embed = new EmbedBuilder()
