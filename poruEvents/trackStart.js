@@ -25,6 +25,6 @@ ${ms(track.info.length)}
 `,
     )
     .setImage(track.info.image);
-
-  return player.textChannel.send({ embeds: [embed] });
+let channel = client.channels.cache.get(player.textChannel)
+  return channel.send({ embeds: [embed] });
 };
