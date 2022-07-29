@@ -29,7 +29,7 @@ client.poru = new Poru(client, client.config.nodes, {
 });
 client.commands = new Collection();
 client.aliases = new Collection();
-client.slash = new Collection();
+client.slashCommands = new Collection();
 
 ['commands', 'events', 'slash', 'poruEvent'].forEach((handler) => {
   require(`./handlers/${handler}`)(client);
