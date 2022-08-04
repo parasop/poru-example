@@ -41,9 +41,9 @@ module.exports = {
           text: `Requested by ${message.author.tag}`,
           iconURL: message.author.displayAvatarURL(),
         })
-        .setFooter(
+        .setFooter({text:
           `Type ${prefix}help <command name> for details on a command!`,
-        )
+        })
         .setTimestamp()
         .setColor('White');
 
