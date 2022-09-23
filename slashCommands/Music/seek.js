@@ -22,7 +22,7 @@ module.exports = {
     if (!player.currentTrack.isSeekable) {
       const embed = new EmbedBuilder()
         .setColor('White')
-        .setColor('Track is not seekable');
+        .setDescription('Track is not seekable');
 
       interaction.reply({
         embeds: [embed],
