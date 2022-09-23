@@ -8,7 +8,7 @@ module.exports = {
   player: true,
   current: true,
 
-  run: async (client, interaction) => {
+  run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
     if (player.loop === 0) {
