@@ -5,7 +5,10 @@ module.exports = {
   description: 'Set loop mode to current track',
   inVc: true,
   sameVc: true,
-  run: (client, interaction) => {
+  player: true,
+  current: true,
+
+  run: async (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
     if (player.loop === 0) {
