@@ -9,11 +9,11 @@
   ],
   "nodes": [
     {
-      "name": "NODE_1",
-      "host": "Lavalink-hosting.jai110043.repl.co",
-      "port": 443,
-      "password": "youshallnotpass",
-      "secure": true
-    }
+      "name": "Localhost",
+    "host": "IP",
+    "port":8080,
+    "password": "youshallnotpass",
+    "secure":false 
+  }
   ]
 }

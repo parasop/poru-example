@@ -11,7 +11,7 @@ module.exports = {
       deaf:true
     });
 
-    const resolve = await client.poru.resolve(args.join(' '));
+    const resolve = await client.poru.resolve({query:args.join(" "),source:"ytsearch",requester:message.author});
     const { loadType, tracks, playlistInfo } = resolve;
 
     if (loadType === 'PLAYLIST_LOADED') {

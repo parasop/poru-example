@@ -6,9 +6,10 @@
   "dependencies": {
     "ascii-table": "^0.0.9",
     "discord.js": "^14.0.3",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.3",
     "ms": "^2.1.3",
-    "poru": "github:parasop/poru"
+    "poru": "github:parasop/poru#v4",
+    "poru-spotify": "github:parasop/poru-spotify"
   },
   "scripts": {
     "start": "node .",
