@@ -37,3 +37,4 @@ client.slashCommands = new Collection();
 });
 
 client.login(process.env.TOKEN);
+
