@@ -43,6 +43,7 @@ module.exports.run = (client, message) => {
     return message.channel.send('No player exists for this server.');
   }
 
+//Player Current
   if (command.current && !player.currentTrack) {
    return message.channel.send('There is nothing playing right now.');
   }
