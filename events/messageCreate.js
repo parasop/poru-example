@@ -44,7 +44,7 @@ module.exports.run = (client, message) => {
   }
 
   if (command.current && !player.currentTrack) {
-    message.channel.send('There is nothing playing right now.');
+   return message.channel.send('There is nothing playing right now.');
   }
 
   //args
