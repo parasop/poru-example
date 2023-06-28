@@ -22,7 +22,8 @@ A Music Bot Template based on [Poru](https://npmjs.com/poru) lavalink client ❤
     "name":"NODE_1",
     "host":"localhost", // Your lavalink host
     "port": 2333, // Your lavalink port
-    "password": "youshallnotpass" // Your lavalink pass
+    "password": "youshallnotpass", // Your lavalink pass
+    "secure": "false" // Your lavalink secure true/false
   }]
 }
 ```
