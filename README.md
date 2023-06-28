@@ -10,7 +10,7 @@ A Music Bot Template based on [Poru](https://npmjs.com/poru) lavalink client ❤
 - 100% Compatible with Lavalink
 - Easy to use and setup
 
-## Configration
+## Configuration
 
 - Enter your bot token in .env file with `TOKEN` variable
 
