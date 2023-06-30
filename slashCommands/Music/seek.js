@@ -19,7 +19,7 @@ module.exports = {
 
     const position = interaction.options.getNumber('position', true);
 
-    if (!player.currentTrack.isSeekable) {
+    if (!player.currentTrack.info.isSeekable) {
       const embed = new EmbedBuilder()
         .setColor('White')
         .setDescription('Track is not seekable');
