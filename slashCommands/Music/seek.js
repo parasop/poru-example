@@ -5,6 +5,8 @@ module.exports = {
   description: 'Seek the player',
   inVc: true,
   sameVc: true,
+  player: true,
+  current: true,
   options: [
     {
       name: 'position',
@@ -19,24 +21,24 @@ module.exports = {
 
     const position = interaction.options.getNumber('position', true);
 
-    if (!player.currentTrack.isSeekable) {
+    if (player.currentTrack.info.isSeekable) {
       const embed = new EmbedBuilder()
-        .setColor('White')
+        .setColor('Blue')
         .setDescription('Track is not seekable');
 
       interaction.reply({
         embeds: [embed],
       });
+    } else {
+      player.seekTo(position * 1000);
+
+      const embed = new EmbedBuilder()
+        .setColor('Blue')
+        .setDescription(`Seeked to ${position}`);
+
+      return interaction.reply({
+        embeds: [embed],
+      })
     }
-
-    player.seekTo(position * 1000);
-
-    const embed = new EmbedBuilder()
-      .setColor('White')
-      .setDescription(`Seeked to ${position}`);
-
-    return interaction.reply({
-      embeds: [embed],
-    });
   },
 };
