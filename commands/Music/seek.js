@@ -8,7 +8,7 @@ module.exports = {
   run: (client, message, args) => {
     const player = client.poru.players.get(message.guild.id);
 
-    if (!player.currentTrack.isSeekable) {
+    if (!player.currentTrack.info.isSeekable) {
       message.reply('This track is not seekable.');
     }
 
